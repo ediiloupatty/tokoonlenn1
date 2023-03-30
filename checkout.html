@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Checkout</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: beige;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #eeeeee;
+            padding: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 2rem 0;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 20px;
+            align-items: center;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        label {
+            justify-self: end;
+            padding-right: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            grid-column: 1 / 3;
+            justify-self: center;
+            padding: 10px 20px;
+            background-color: #008CBA;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            border: 2px solid #333;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #0074A6;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        #loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border-left-color: #333;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #content {
+            display: none;
+        }
+
+        nav a {
+            display: inline-block;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            padding: 8px 16px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #666;
+            background-color: #ebebeb;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .animated-button {
+            background-color: #008CBA;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s;
+        }
+
+        .animated-button:hover {
+            background-color: #0074A6;
+        }
+
+        .animated-button span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .animated-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease-in;
+            z-index: 1;
+        }
+
+        .animated-button:hover::before {
+            left: 100%;
+        }
+
+        /* (style Anda) */
+    </style>
+    <script>
+        function hideLoader() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        }
+        window.addEventListener("load", function() {
+            setTimeout(hideLoader, 200); // Anda dapat mengubah durasi animasi loading (200 milidetik)
+        });
+    </script>
+    
+</head>
+<body>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <div id="content">
+        <header>
+            <h1>Toko Online Saya</h1>
+        </header>
+
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="index.html#produk">Produk</a>
+            <a href="index.html#kontak">Kontak</a>
+        </nav>
+
+    <div class="container">
+        <div class="checkout-info">
+            <h2>Halaman Checkout</h2>
+            <p>Silakan isi informasi berikut untuk menyelesaikan pemesanan Anda.</p>
+        </div>
+
+        <form action="pembayaran.html">
+            <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="address">Alamat:</label>
+                <input type="text" id="address" name="address" required>
+                <label for="phone">No. Telepon:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+            <button type="submit" class="animated-button"><span>Selesaikan Pesanan</span></button>
+        </form>
+    </div>
+
+    <!-- (footer Anda) -->
+</body>
+</html>
